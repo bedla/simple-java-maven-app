@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Download dependencies') {
             steps {
-                sh 'mvn -B -s .settings.xml dependency:go-offline'
+                sh 'mvn -B -s .settings.xml de.qaware.maven:go-offline-maven-plugin:resolve-dependencies'
             }
         }
         stage('Build') {
