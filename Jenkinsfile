@@ -6,9 +6,14 @@ pipeline {
         }
     }
     stages {
+        stage('Download dependencies') {
+            steps {
+                sh 'mvn -B -s .settings.xml dependency:go-offline'
+            }
+        }
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -o -B -DskipTests clean package'
             }
         }
     }
